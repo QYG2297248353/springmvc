@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- 定位视图位置 -->
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/page/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+
+	<!-- 处理请求访问 -->
+	<bean id="simpleUrlHandlerMapping"
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/index">indexController</prop>
+				<prop key="/hello">helloController</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- 导向请求访问->指向控制器 -->
+	<bean id="indexController"
+		class="com.ms.controller.IndexController"></bean>
+	<bean id="helloController"
+		class="com.ms.controller.HelloController"></bean>
+</beans>
